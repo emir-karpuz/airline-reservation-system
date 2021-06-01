@@ -1,4 +1,6 @@
-﻿Module AirlineReservationSystem
+﻿Imports Airline_Reservation_System
+
+Module AirlineReservationSystem
 
     Sub Main()
         Dim PegasusAircraft As New Aircraft(1, "Airbus", "A320")
@@ -108,6 +110,41 @@
                                 "Seat type is " & Me.Type & vbCrLf &
                                 "Price is " & Me.Price)
         End Sub
+    End Class
+
+    Public Class Ticket
+        Private ReadOnly Property Id As Integer
+        Private ReadOnly Property Name As String
+        Private ReadOnly Property Surname As String
+        Private ReadOnly Property NumberOfFlight As Flight
+        Private ReadOnly Property NumberOfSeat As Seat
+        Private ReadOnly Property NumberOfGate As String
+
+        Public Sub New(id As Integer, name As String, surname As String, numberOfFlight As Flight, numberOfSeat As Seat, numberOfGate As String)
+            Me.Id = id
+            Me.Name = name
+            Me.Surname = surname
+            Me.NumberOfFlight = numberOfFlight
+            Me.NumberOfSeat = numberOfSeat
+            Me.NumberOfGate = numberOfGate
+        End Sub
+
+        Public Sub Buy()
+            Console.WriteLine("Ticket has been bought.")
+        End Sub
+
+        Public Sub Cancel()
+            Console.WriteLine("Ticket has been canceled.")
+        End Sub
+
+        Public Sub Reschedule()
+            Console.WriteLine("Ticket has been rescheduled.")
+        End Sub
+
+        Public Sub Suspend()
+            Console.WriteLine("Ticket has been suspended.")
+        End Sub
+
     End Class
 
 End Module
