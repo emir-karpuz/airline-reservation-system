@@ -4,20 +4,20 @@ Module AirlineReservationSystem
 
     Sub Main()
         Dim PegasusAircraft As New Aircraft(1, "Airbus", "A320")
-        Dim AnadoluJetAircraft As New Aircraft(1, "Boeing", "737")
         Dim TK2186 As New Flight(1, "TK2186", #2021-6-1#, #13:15:00#, "TZX", "SAW", PegasusAircraft)
         Dim WindowSeat As New Seat(1, "F3", TK2186, "Economic")
+        Dim TZXTicket As New Ticket(1, "Ahmet", "Karadeniz", TK2186, WindowSeat, "G-101")
 
-        WindowSeat.Book()
+        TZXTicket.Buy()
 
         Console.ReadLine()
     End Sub
 
     Public Class Aircraft
-        Private ReadOnly Property Id As Integer
-        Private ReadOnly Property NameOfManifacturer As String
-        Private ReadOnly Property Model As String
-        Private ReadOnly Property NumberOfSeats As Integer
+        Public ReadOnly Property Id As Integer
+        Public ReadOnly Property NameOfManifacturer As String
+        Public ReadOnly Property Model As String
+        Public ReadOnly Property NumberOfSeats As Integer
 
         Public Sub New(id As Integer, nameOfManifacturer As String, model As String)
             Me.Id = id
@@ -42,14 +42,14 @@ Module AirlineReservationSystem
     End Class
 
     Public Class Flight
-        Private ReadOnly Property Id As Integer
-        Private ReadOnly Property Number As String
-        Private ReadOnly Property DateOfDeparture As Date
-        Private ReadOnly Property TimeOfDeparture As Date
-        Private ReadOnly Property WhereFrom As String
-        Private ReadOnly Property WhereTo As String
-        Private ReadOnly Property TypeOfAircraft As Aircraft
-        Private ReadOnly Property Availability As Boolean
+        Public ReadOnly Property Id As Integer
+        Public ReadOnly Property Number As String
+        Public ReadOnly Property DateOfDeparture As Date
+        Public ReadOnly Property TimeOfDeparture As Date
+        Public ReadOnly Property WhereFrom As String
+        Public ReadOnly Property WhereTo As String
+        Public ReadOnly Property TypeOfAircraft As Aircraft
+        Public ReadOnly Property Availability As Boolean
 
         Public Sub New(id As Integer,
                        number As String,
@@ -84,12 +84,12 @@ Module AirlineReservationSystem
     End Class
 
     Public Class Seat
-        Private ReadOnly Property Id As Integer
-        Private ReadOnly Property Number As String
-        Private ReadOnly Property NumberOfFlight As Flight
-        Private ReadOnly Property Type As String
-        Private ReadOnly Property Price As Double
-        Private ReadOnly Property Availability As Boolean
+        Public ReadOnly Property Id As Integer
+        Public ReadOnly Property Number As String
+        Public ReadOnly Property NumberOfFlight As Flight
+        Public ReadOnly Property Type As String
+        Public ReadOnly Property Price As Double
+        Public ReadOnly Property Availability As Boolean
 
         Public Sub New(id As Integer, number As String, numberOfFlight As Flight, type As String)
             Me.Id = id
@@ -113,12 +113,12 @@ Module AirlineReservationSystem
     End Class
 
     Public Class Ticket
-        Private ReadOnly Property Id As Integer
-        Private ReadOnly Property Name As String
-        Private ReadOnly Property Surname As String
-        Private ReadOnly Property NumberOfFlight As Flight
-        Private ReadOnly Property NumberOfSeat As Seat
-        Private ReadOnly Property NumberOfGate As String
+        Public ReadOnly Property Id As Integer
+        Public ReadOnly Property Name As String
+        Public ReadOnly Property Surname As String
+        Public ReadOnly Property NumberOfFlight As Flight
+        Public ReadOnly Property NumberOfSeat As Seat
+        Public ReadOnly Property NumberOfGate As String
 
         Public Sub New(id As Integer, name As String, surname As String, numberOfFlight As Flight, numberOfSeat As Seat, numberOfGate As String)
             Me.Id = id
@@ -130,7 +130,12 @@ Module AirlineReservationSystem
         End Sub
 
         Public Sub Buy()
-            Console.WriteLine("Ticket has been bought.")
+            Console.WriteLine("The ticket has been bought. " & vbCrLf &
+                                "Name is " & Me.Name & vbCrLf &
+                                "Surname is " & Me.Surname & vbCrLf &
+                                "Seat is " & Me.NumberOfSeat.Number & vbCrLf &
+                                "Flight is " & Me.NumberOfFlight.Number & vbCrLf &
+                                "Gate number is " & Me.NumberOfGate)
         End Sub
 
         Public Sub Cancel()
