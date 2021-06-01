@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{717CFDDA-8E1F-4FD7-9F84-3BF884DCB618}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <StartupObject>Airline_Reservation_System.Module1</StartupObject>
+    <StartupObject>Airline_Reservation_System.AirlineReservationSystem</StartupObject>
     <RootNamespace>Airline_Reservation_System</RootNamespace>
     <AssemblyName>Airline Reservation System</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -84,7 +84,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainModule.vb" />
+    <Compile Include="AirlineReservationSystem.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
